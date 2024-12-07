@@ -1,4 +1,4 @@
-FROM golang:1.20 AS base
+FROM golang:1.23.4 AS base
 USER root
 RUN apt update && \
     apt-get install -y \
@@ -26,7 +26,7 @@ RUN go test $(go list ./... | grep -v github.com/Peersyst/exrp/tests/e2e/poa)
 # RUN TEST_CLEANUP_DIR=false go test -p 1 -v -timeout 30m ./tests/e2e/...
 RUN touch /test.lock
 
-FROM golang:1.20 AS release
+FROM golang:1.23.4 AS release
 WORKDIR /
 COPY --from=integration /test.lock /test.lock
 COPY --from=build /go/src/github.com/Peersyst/exrp/release /binaries
