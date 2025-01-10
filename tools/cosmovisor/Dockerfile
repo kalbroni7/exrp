@@ -11,7 +11,7 @@ WORKDIR /root/cosmos-sdk/cosmovisor
 RUN make cosmovisor
 
 
-FROM alpine:3.17.3
+FROM alpine:3.21.2
 
 ENV DAEMON_HOME=/root/.exrpd
 ENV DAEMON_NAME=exrpd
